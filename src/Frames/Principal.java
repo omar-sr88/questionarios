@@ -4,7 +4,8 @@
  */
 package Frames;
 
-import Logic.Questoes;
+import Logic.Conector;
+import Logic.Questao;
 import org.omg.CORBA.portable.ApplicationException;
 
 /**
@@ -13,12 +14,14 @@ import org.omg.CORBA.portable.ApplicationException;
  */
 public class Principal extends javax.swing.JFrame {
 
-       Questoes q;
+       Questao q;
+       Conector con;
     /**
      * Creates new form Principal
      */
     public Principal() {
-        q = new Questoes();
+        q = new Questao();
+        con = Conector.getInstance();
         initComponents();
     }
 
@@ -161,9 +164,12 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        q.adicionarQuestao(jTextField1.getText());
+        q.setTexto(jTextField1.getText());
         
-        jLabel1.setText(q.last());
+        
+        con.adicionar(q);
+        jLabel1.setText(q.getTexto());
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
