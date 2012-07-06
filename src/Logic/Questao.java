@@ -65,7 +65,8 @@ public class Questao implements Serializable {
 
     @Override
     public String toString() {
-        return "Logic.Questao[ id=" + id + " ]";
+        
+        return this.id +" - "+ this.texto;
     }
     
     

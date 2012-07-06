@@ -4,6 +4,8 @@
  */
 package Logic;
 
+import java.util.List;
+import javax.persistence.Query;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -40,11 +42,17 @@ public final class Conector {
 
             e.printStackTrace();
             manager.getTransaction().rollback();
-         } finally {
-             manager.close();
          }
     }
 
+     public List<Questao> retornaTodas(){
+            Query query = manager.createQuery("select q from Questao q");
+            List<Questao> todas = query.getResultList();
+            
+            return todas;
+     }
+         
+     
      
     
 }
